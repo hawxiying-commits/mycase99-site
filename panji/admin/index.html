@@ -50,19 +50,14 @@
     <form id="f1" novalidate>
       <div class="field">
         <label for="email">管理者 Email</label>
-        <input type="email" id="email" autocomplete="email" inputmode="email" required>
-        <p class="hint">系統會寄一組 6 位數驗證碼到這個信箱，限已授權的管理者使用。</p>
+        <input type="email" id="email" autocomplete="username" inputmode="email" required>
       </div>
-      <button class="btn" type="submit" id="b1">寄送驗證碼</button>
-    </form>
-    <form id="f2" novalidate hidden>
-      <p>驗證碼已寄到 <b id="sentTo"></b>，10 分鐘內有效。沒收到的話請看看垃圾信件匣。</p>
-      <div class="field" style="margin-top:16px">
-        <label for="code">6 位數驗證碼</label>
-        <input type="text" id="code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" required>
+      <div class="field">
+        <label for="pw">密碼</label>
+        <input type="password" id="pw" autocomplete="current-password" required>
+        <p class="hint">限已授權的管理者使用。</p>
       </div>
-      <button class="btn" type="submit" id="b2">登入</button>
-      <button class="btn ghost" type="button" id="back" style="margin-top:10px">換一個 Email</button>
+      <button class="btn" type="submit" id="b1">登入</button>
     </form>
     <p class="msg" id="lmsg" role="alert" tabindex="-1"></p>
   </main>
@@ -128,36 +123,26 @@
   function busy(btn, on, label) { btn.disabled = on; if (label) btn.textContent = label; }
 
   /* ---- 登入 ---- */
-  var lmsg = $('lmsg'), pendingEmail = '';
+  var lmsg = $('lmsg');
   $('f1').addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = $('email').value.trim().toLowerCase();
+    var email = $('email').value.trim().toLowerCase(), pw = $('pw').value;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return say(lmsg, '請輸入完整的 Email。');
+    if (!pw) return say(lmsg, '請輸入密碼。');
     if (!API) return say(lmsg, '後台尚未啟用。');
-    say(lmsg, ''); busy($('b1'), true, '寄送中…');
-    call({ action: 'adminCode', email: email }).then(function () {
-      busy($('b1'), false, '寄送驗證碼');
-      pendingEmail = email; $('sentTo').textContent = email;
-      $('f1').hidden = true; $('f2').hidden = false; $('code').value = ''; $('code').focus();
-    }).catch(function () { busy($('b1'), false, '寄送驗證碼'); say(lmsg, '網路連線不穩，請再試一次。'); });
-  });
-  $('back').addEventListener('click', function () { $('f2').hidden = true; $('f1').hidden = false; say(lmsg, ''); $('email').focus(); });
-  $('f2').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var code = $('code').value.replace(/\D/g, '');
-    if (code.length !== 6) return say(lmsg, '驗證碼是 6 個數字。');
-    say(lmsg, ''); busy($('b2'), true, '登入中…');
-    call({ action: 'adminLogin', email: pendingEmail, code: code }).then(function (j) {
-      busy($('b2'), false, '登入');
-      if (!j.ok) return say(lmsg, '驗證碼不正確或已過期。這個信箱若不在管理者名單內，也不會收到驗證碼。');
+    say(lmsg, ''); busy($('b1'), true, '登入中…');
+    call({ action: 'adminLogin', email: email, password: pw }).then(function (j) {
+      busy($('b1'), false, '登入');
+      if (!j.ok) return say(lmsg, j.error === 'locked' ? '這個 Email 已連續輸入錯誤 5 次，請 10 分鐘後再試。' : 'Email 或密碼不正確。');
+      $('pw').value = '';
       session = { token: j.token, email: j.email };
       try { sessionStorage.setItem(KEY, JSON.stringify(session)); } catch (err) {}
       enter();
-    }).catch(function () { busy($('b2'), false, '登入'); say(lmsg, '網路連線不穩，請再試一次。'); });
+    }).catch(function () { busy($('b1'), false, '登入'); say(lmsg, '網路連線不穩，請再試一次。'); });
   });
   function logout() {
     session = null; try { sessionStorage.removeItem(KEY); } catch (e) {}
-    $('appView').hidden = true; $('loginView').hidden = false; $('f2').hidden = true; $('f1').hidden = false;
+    $('appView').hidden = true; $('loginView').hidden = false;
   }
   $('logout').addEventListener('click', logout);
 

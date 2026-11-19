@@ -23,7 +23,7 @@ a { color: var(--pine); }
 .card { background: var(--tile); border: 1px solid var(--seam); border-top: 4px solid var(--gold); padding: 26px 20px 28px; }
 .narrow .card { max-width: 460px; margin: 26px auto 0; width: calc(100% - 40px); }
 label { display: block; font-weight: 700; margin-bottom: 7px; }
-input[type="text"], input[type="email"], input[type="search"], select {
+input[type="text"], input[type="email"], input[type="password"], input[type="search"], select {
   width: 100%; min-height: 52px; padding: 10px 14px; font: inherit; font-size: 1.0625rem; color: var(--ink);
   background: var(--tile); border: 1.5px solid var(--line); border-radius: 2px;
 }
