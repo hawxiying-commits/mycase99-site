@@ -103,7 +103,6 @@
       </table>
       <p class="empty" id="empty" hidden>目前沒有符合條件的報名資料。</p>
     </div>
-    <p class="note" id="foot"></p>
   </div>
 </div>
 
@@ -156,7 +155,6 @@
       if (!j.ok) { logout(); return say(lmsg, '登入已過期，請重新登入。'); }
       rows = j.rows; canSend = j.canSend; $('send').hidden = !canSend;
       render();
-      $('foot').textContent = '資料更新時間 ' + new Date().toLocaleString('zh-TW', { hour12: false }) + '。登入 6 小時後會自動登出。' + (canSend ? '今日還可寄出 ' + j.quota + ' 封信。' : '');
     }).catch(function () { busy($('reload'), false, '重新整理'); say(amsg, '讀取名單失敗，請確認網路後按「重新整理」。'); });
   }
   function visible() {
