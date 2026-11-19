@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>報名管理後台｜「磐基永續」論壇</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../app.css">
+<style>
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; padding: 14px 20px; background: var(--pine); color: #fff; border-bottom: 4px solid var(--gold); }
+  .bar h1 { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; letter-spacing: .06em; }
+  .bar .me { font-size: .875rem; display: flex; align-items: center; gap: 12px; }
+  .bar button { background: none; border: 1px solid #ffffff88; color: #fff; padding: 4px 12px; font: inherit; font-size: .8125rem; border-radius: 2px; cursor: pointer; }
+  .page { max-width: 1360px; margin: 0 auto; padding: 20px; }
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat { background: var(--tile); border: 1px solid var(--seam); padding: 12px 14px; }
+  .stat b { display: block; font-size: 1.875rem; line-height: 1.2; color: var(--pine); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .8125rem; color: var(--ink-soft); }
+  .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 18px 0 12px; }
+  .tools input[type="search"] { flex: 1 1 220px; min-height: 44px; font-size: 1rem; }
+  .tools select { width: auto; min-height: 44px; font-size: 1rem; }
+  .tools label { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-weight: 400; font-size: .875rem; }
+  .bulk { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; padding: 8px 12px; background: var(--wash-1); border: 1px solid var(--line); font-size: .9375rem; }
+  .scroll { overflow-x: auto; border: 1px solid var(--seam); background: var(--tile); }
+  table { border-collapse: collapse; width: 100%; min-width: 1180px; font-size: .875rem; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--seam); vertical-align: top; white-space: nowrap; }
+  th { position: sticky; top: 0; background: #f3ecd4; font-weight: 700; color: var(--pine-deep); }
+  td.wrap { white-space: normal; min-width: 11em; }
+  td select { min-height: 34px; padding: 2px 6px; font-size: .875rem; width: auto; }
+  tr.test td { color: var(--ink-soft); background: #faf6e8; }
+  .tag { display: inline-block; border: 1.5px solid var(--mustard); padding: 0 6px; font-size: .75rem; line-height: 1.6; margin-left: 6px; }
+  .st-錄取 { font-weight: 700; color: var(--pine); }
+  .empty { padding: 28px; text-align: center; color: var(--ink-soft); }
+  .note { margin-top: 10px; font-size: .8125rem; color: var(--ink-soft); }
+  @media (min-width: 760px) { .stats { grid-template-columns: repeat(6, 1fr); } }
+</style>
+</head>
+<body>
+
+<!-- 登入 -->
+<div class="narrow" id="loginView">
+  <header class="top">
+    <p class="eyebrow">「磐基永續」論壇</p>
+    <h1 style="font-size:2.25rem">報名管理後台</h1>
+  </header>
+  <main class="card">
+    <form id="f1" novalidate>
+      <div class="field">
+        <label for="email">管理者 Email</label>
+        <input type="email" id="email" autocomplete="email" inputmode="email" required>
+        <p class="hint">系統會寄一組 6 位數驗證碼到這個信箱，限已授權的管理者使用。</p>
+      </div>
+      <button class="btn" type="submit" id="b1">寄送驗證碼</button>
+    </form>
+    <form id="f2" novalidate hidden>
+      <p>驗證碼已寄到 <b id="sentTo"></b>，10 分鐘內有效。沒收到的話請看看垃圾信件匣。</p>
+      <div class="field" style="margin-top:16px">
+        <label for="code">6 位數驗證碼</label>
+        <input type="text" id="code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" required>
+      </div>
+      <button class="btn" type="submit" id="b2">登入</button>
+      <button class="btn ghost" type="button" id="back" style="margin-top:10px">換一個 Email</button>
+    </form>
+    <p class="msg" id="lmsg" role="alert" tabindex="-1"></p>
+  </main>
+</div>
+
+<!-- 名單 -->
+<div id="appView" hidden>
+  <div class="bar">
+    <h1>「磐基永續」論壇　報名管理後台</h1>
+    <div class="me"><span id="me"></span><button type="button" id="logout">登出</button></div>
+  </div>
+  <div class="page">
+    <div class="stats" id="stats"></div>
+
+    <div class="tools">
+      <input type="search" id="q" placeholder="搜尋姓名、單位、Email、手機" aria-label="搜尋">
+      <select id="flt" aria-label="篩選審核結果">
+        <option value="*">全部</option><option value="">未審核</option><option value="錄取">錄取</option><option value="候補">候補</option><option value="未錄取">未錄取</option>
+      </select>
+      <label><input type="checkbox" id="showTest"> 顯示測試資料</label>
+      <button class="btn small ghost" type="button" id="reload">重新整理</button>
+      <button class="btn small" type="button" id="xlsx">下載 Excel</button>
+      <button class="btn small" type="button" id="send" hidden>寄發錄取通知</button>
+    </div>
+
+    <div class="bulk" id="bulk" hidden>
+      <span id="bulkN"></span>
+      <button class="btn small ghost" type="button" data-set="錄取">標為錄取</button>
+      <button class="btn small ghost" type="button" data-set="候補">標為候補</button>
+      <button class="btn small ghost" type="button" data-set="未錄取">標為未錄取</button>
+      <button class="btn small ghost" type="button" data-set="">清除審核結果</button>
+    </div>
+
+    <p class="msg" id="amsg" role="status" tabindex="-1" style="margin:0 0 12px"></p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr>
+          <th><input type="checkbox" id="all" aria-label="全選目前顯示的名單"></th>
+          <th>編號</th><th>報名時間</th><th>姓名</th><th>性別</th><th>身分別</th><th>服務單位／就讀學校系所</th><th>職稱</th><th>Email</th><th>手機</th><th>審核結果</th><th>確認信</th><th>錄取通知</th><th>報到時間</th>
+        </tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+      <p class="empty" id="empty" hidden>目前沒有符合條件的報名資料。</p>
+    </div>
+    <p class="note" id="foot"></p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+<script>window.PANJI = { api: 'https://script.google.com/macros/s/AKfycbzYeFg9huC5jtGrbob3tW2_8vRupNOkdKsLBgkUQ32tj6D0oVqGgV9dTY2LO7G1MTqA8A/exec' };</script>
+<script>
+(function () {
+  var API = (window.PANJI || {}).api || '', KEY = 'panji-admin';
+  var $ = function (id) { return document.getElementById(id); };
+  var session = null, rows = [], canSend = false;
+  try { session = JSON.parse(sessionStorage.getItem(KEY) || 'null'); } catch (e) {}
+
+  function call(body) {
+    return fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) }).then(function (r) { return r.json(); });
+  }
+  function say(el, text) { el.textContent = text || ''; el.classList.toggle('on', !!text); if (text) el.focus({ preventScroll: true }); }
+  function busy(btn, on, label) { btn.disabled = on; if (label) btn.textContent = label; }
+
+  /* ---- 登入 ---- */
+  var lmsg = $('lmsg'), pendingEmail = '';
+  $('f1').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = $('email').value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return say(lmsg, '請輸入完整的 Email。');
+    if (!API) return say(lmsg, '後台尚未啟用。');
+    say(lmsg, ''); busy($('b1'), true, '寄送中…');
+    call({ action: 'adminCode', email: email }).then(function () {
+      busy($('b1'), false, '寄送驗證碼');
+      pendingEmail = email; $('sentTo').textContent = email;
+      $('f1').hidden = true; $('f2').hidden = false; $('code').value = ''; $('code').focus();
+    }).catch(function () { busy($('b1'), false, '寄送驗證碼'); say(lmsg, '網路連線不穩，請再試一次。'); });
+  });
+  $('back').addEventListener('click', function () { $('f2').hidden = true; $('f1').hidden = false; say(lmsg, ''); $('email').focus(); });
+  $('f2').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var code = $('code').value.replace(/\D/g, '');
+    if (code.length !== 6) return say(lmsg, '驗證碼是 6 個數字。');
+    say(lmsg, ''); busy($('b2'), true, '登入中…');
+    call({ action: 'adminLogin', email: pendingEmail, code: code }).then(function (j) {
+      busy($('b2'), false, '登入');
+      if (!j.ok) return say(lmsg, '驗證碼不正確或已過期。這個信箱若不在管理者名單內，也不會收到驗證碼。');
+      session = { token: j.token, email: j.email };
+      try { sessionStorage.setItem(KEY, JSON.stringify(session)); } catch (err) {}
+      enter();
+    }).catch(function () { busy($('b2'), false, '登入'); say(lmsg, '網路連線不穩，請再試一次。'); });
+  });
+  function logout() {
+    session = null; try { sessionStorage.removeItem(KEY); } catch (e) {}
+    $('appView').hidden = true; $('loginView').hidden = false; $('f2').hidden = true; $('f1').hidden = false;
+  }
+  $('logout').addEventListener('click', logout);
+
+  /* ---- 名單 ---- */
+  var amsg = $('amsg'), tb = $('tb');
+  function enter() { $('loginView').hidden = true; $('appView').hidden = false; $('me').textContent = session.email; load(); }
+  function load() {
+    busy($('reload'), true, '讀取中…');
+    return call({ action: 'adminList', token: session.token }).then(function (j) {
+      busy($('reload'), false, '重新整理');
+      if (!j.ok) { logout(); return say(lmsg, '登入已過期，請重新登入。'); }
+      rows = j.rows; canSend = j.canSend; $('send').hidden = !canSend;
+      render();
+      $('foot').textContent = '資料更新時間 ' + new Date().toLocaleString('zh-TW', { hour12: false }) + '。登入 6 小時後會自動登出。' + (canSend ? '今日還可寄出 ' + j.quota + ' 封信。' : '');
+    }).catch(function () { busy($('reload'), false, '重新整理'); say(amsg, '讀取名單失敗，請確認網路後按「重新整理」。'); });
+  }
+  function visible() {
+    var q = $('q').value.trim().toLowerCase(), flt = $('flt').value, test = $('showTest').checked;
+    return rows.filter(function (r) {
+      if ((r.note === '測試') && !test) return false;
+      if (flt !== '*' && r.status !== flt) return false;
+      return !q || [r.id, r.name, r.org, r.title, r.email, r.phone].join(' ').toLowerCase().indexOf(q) >= 0;
+    });
+  }
+  function td(tr, text, cls) { var c = document.createElement('td'); c.textContent = text == null ? '' : text; if (cls) c.className = cls; tr.appendChild(c); return c; }
+  function render() {
+    var real = rows.filter(function (r) { return r.note !== '測試'; });
+    var n = function (fn) { return real.filter(fn).length; };
+    var S = [['報名人數', real.length], ['現職館員', n(function (r) { return r.role === '現職博物館館員'; })], ['相關科系學生', n(function (r) { return r.role === '博物館相關科系學生'; })],
+             ['其他身分', n(function (r) { return r.role === '其他'; })], ['已標為錄取', n(function (r) { return r.status === '錄取'; })], ['已報到', n(function (r) { return !!r.checkin; })]];
+    $('stats').textContent = '';
+    S.forEach(function (s) { var d = document.createElement('div'); d.className = 'stat'; var b = document.createElement('b'); b.textContent = s[1]; var sp = document.createElement('span'); sp.textContent = s[0]; d.appendChild(b); d.appendChild(sp); $('stats').appendChild(d); });
+
+    var list = visible(); tb.textContent = ''; $('all').checked = false; $('empty').hidden = list.length > 0;
+    list.forEach(function (r) {
+      var tr = document.createElement('tr'); if (r.note === '測試') tr.className = 'test';
+      var c = td(tr, ''), cb = document.createElement('input'); cb.type = 'checkbox'; cb.value = r.id; cb.setAttribute('aria-label', '選取 ' + r.name); c.appendChild(cb);
+      var idc = td(tr, r.id); if (r.note === '測試') { var t = document.createElement('span'); t.className = 'tag'; t.textContent = '測試'; idc.appendChild(t); }
+      td(tr, r.time.slice(5, 16)); td(tr, r.name); td(tr, r.gender); td(tr, r.role); td(tr, r.org, 'wrap'); td(tr, r.title); td(tr, r.email); td(tr, r.phone);
+      var sc = td(tr, ''), sel = document.createElement('select'); sel.setAttribute('aria-label', r.name + ' 的審核結果');
+      [['', '未審核'], ['錄取', '錄取'], ['候補', '候補'], ['未錄取', '未錄取']].forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; if (o[0] === r.status) op.selected = true; sel.appendChild(op); });
+      if (r.status) sel.className = 'st-' + r.status;
+      sel.addEventListener('change', function () { setStatus([r.id], sel.value); });
+      sc.appendChild(sel);
+      td(tr, r.confirm === '待寄' ? '待寄' : r.confirm ? '已寄' : ''); td(tr, r.accept ? '已寄 ' + r.accept.slice(5, 16) : ''); td(tr, r.checkin ? r.checkin.slice(5, 16) : '');
+      tb.appendChild(tr);
+    });
+    syncBulk();
+  }
+  function picked() { return [].map.call(tb.querySelectorAll('input[type=checkbox]:checked'), function (c) { return c.value; }); }
+  function syncBulk() { var p = picked(); $('bulk').hidden = !p.length; $('bulkN').textContent = '已選 ' + p.length + ' 人：'; }
+  tb.addEventListener('change', function (e) { if (e.target.type === 'checkbox') syncBulk(); });
+  $('all').addEventListener('change', function () { [].forEach.call(tb.querySelectorAll('input[type=checkbox]'), function (c) { c.checked = $('all').checked; }); syncBulk(); });
+  ['q', 'flt', 'showTest'].forEach(function (id) { $(id).addEventListener('input', render); });
+  $('reload').addEventListener('click', function () { say(amsg, ''); load(); });
+  $('bulk').addEventListener('click', function (e) { var b = e.target.closest('[data-set]'); if (b) setStatus(picked(), b.getAttribute('data-set')); });
+
+  function setStatus(ids, status) {
+    if (!ids.length) return;
+    say(amsg, '');
+    call({ action: 'adminSetStatus', token: session.token, ids: ids, status: status }).then(function (j) {
+      if (!j.ok) return j.error === 'auth' ? (logout(), say(lmsg, '登入已過期，請重新登入。')) : say(amsg, '更新失敗，請按「重新整理」後再試一次。');
+      rows.forEach(function (r) { if (ids.indexOf(r.id) >= 0) r.status = status; });
+      render();
+      say(amsg, '已將 ' + j.updated + ' 人標為「' + (status || '未審核') + '」。');
+    }).catch(function () { say(amsg, '網路連線不穩，審核結果沒有存到，請再試一次。'); load(); });
+  }
+
+  /* ---- 匯出 ---- */
+  $('xlsx').addEventListener('click', function () {
+    var head = ['編號', '報名時間', '姓名', '性別', '身分別', '服務單位或就讀學校系所', '職稱', 'Email', '手機號碼', '審核結果', '錄取通知', '報到時間'];
+    var data = rows.filter(function (r) { return r.note !== '測試'; }).map(function (r) { return [r.id, r.time, r.name, r.gender, r.role, r.org, r.title, r.email, r.phone, r.status, r.accept, r.checkin]; });
+    var stamp = new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 16).replace(/[-:T]/g, ''), name = '磐基永續論壇_報名名單_' + stamp;
+    if (window.XLSX) {
+      var ws = XLSX.utils.aoa_to_sheet([head].concat(data));
+      ws['!cols'] = [6, 18, 10, 8, 18, 30, 16, 28, 13, 9, 18, 18].map(function (w) { return { wch: w }; });
+      data.forEach(function (_, i) { var cell = ws[XLSX.utils.encode_cell({ r: i + 1, c: 8 })]; if (cell) { cell.t = 's'; cell.z = '@'; } });
+      var wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, '報名名單'); XLSX.writeFile(wb, name + '.xlsx');
+    } else {
+      var csv = [head].concat(data).map(function (r) { return r.map(function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(','); }).join('\r\n');
+      var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv' })); a.download = name + '.csv'; a.click();
+    }
+  });
+
+  /* ---- 寄錄取通知（僅廠商帳號） ---- */
+  $('send').addEventListener('click', function () {
+    say(amsg, ''); busy($('send'), true);
+    call({ action: 'adminSendAccept', token: session.token, dry: true }).then(function (j) {
+      if (!j.ok) { busy($('send'), false); return say(amsg, '無法寄送，請重新登入後再試。'); }
+      if (!j.pending) { busy($('send'), false); return say(amsg, '沒有需要寄送的對象：請先把錄取者的審核結果標為「錄取」；已寄過的人不會重複寄。'); }
+      if (j.pending > j.quota) { busy($('send'), false); return say(amsg, '有 ' + j.pending + ' 封要寄，但今天只剩 ' + j.quota + ' 封的寄信額度，請明天再寄或分批處理。'); }
+      if (!confirm('將寄出 ' + j.pending + ' 封錄取通知信，寄出後無法收回。確定要寄嗎？')) { busy($('send'), false); return; }
+      return call({ action: 'adminSendAccept', token: session.token }).then(function (k) {
+        busy($('send'), false);
+        say(amsg, k.ok ? '已寄出 ' + k.sent + ' 封錄取通知' + (k.pending ? '，還有 ' + k.pending + ' 封因額度不足未寄。' : '。') : '寄送失敗，請按「重新整理」確認哪些已寄出。');
+        load();
+      });
+    }).catch(function () { busy($('send'), false); say(amsg, '網路連線不穩。請按「重新整理」確認哪些已寄出，再決定是否重寄。'); });
+  });
+
+  if (session && session.token && API) enter();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>線上報到｜「磐基永續」論壇</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../app.css">
+</head>
+<body class="narrow">
+<header class="top">
+  <p class="eyebrow">博物館藏品盤點之理論與實務　論壇</p>
+  <h1>磐基永續</h1>
+  <p><span class="chip">線上報到</span></p>
+</header>
+
+<main class="card">
+  <div class="center" id="gate" hidden>
+    <h2 class="big" id="gateTitle"></h2>
+    <p style="margin-top:10px" id="gateText"></p>
+  </div>
+
+  <form id="f" novalidate>
+    <div class="field">
+      <label for="name">報名時填寫的姓名</label>
+      <input type="text" id="name" name="name" autocomplete="name" enterkeyhint="go" required>
+    </div>
+    <div class="field" id="tailBox" hidden>
+      <label for="tail">手機號碼末三碼</label>
+      <input type="text" id="tail" name="tail" inputmode="numeric" maxlength="3" autocomplete="off">
+      <p class="hint">報名名單中有同名的人，請再輸入報名時填寫的手機號碼末三碼。</p>
+    </div>
+    <p class="msg" id="msg" role="alert" tabindex="-1"></p>
+    <button class="btn" type="submit" id="go">報到</button>
+  </form>
+
+  <div class="center" id="ok" hidden tabindex="-1">
+    <div class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5 10 18 19.5 6.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="square"/></svg></div>
+    <h2 class="big">報到完成</h2>
+    <p class="who" id="okName"></p>
+    <p class="soft" id="okTime"></p>
+    <a class="btn" id="book" href="#" hidden>下載大會手冊（PDF）</a>
+    <p class="soft" id="bookNote" style="margin-top:12px"></p>
+  </div>
+</main>
+
+<p class="foot">2026 年 12 月 7 日（一）14:00–16:30<br>國立故宮博物院第一展覽館 B1 多媒體放映室<br>報到有問題請洽現場工作人員</p>
+
+<script>window.PANJI = { api: 'https://script.google.com/macros/s/AKfycbzYeFg9huC5jtGrbob3tW2_8vRupNOkdKsLBgkUQ32tj6D0oVqGgV9dTY2LO7G1MTqA8A/exec' };</script>
+<script>
+(function () {
+  var API = (window.PANJI || {}).api || '', TEST = new URLSearchParams(location.search).get('t') || '';
+  var f = document.getElementById('f'), msg = document.getElementById('msg'), go = document.getElementById('go');
+  var gate = document.getElementById('gate'), ok = document.getElementById('ok'), tailBox = document.getElementById('tailBox');
+  var GATE = {
+    before: ['報到尚未開放', '線上報到將於 12 月 7 日（一）12:30 開放，請於活動當天再掃描一次。'],
+    closed: ['報到已結束', '本論壇的線上報到已經結束。']
+  };
+  function setGate(state) {
+    var m = TEST ? null : GATE[state];
+    gate.hidden = !m;
+    f.hidden = !!m || !ok.hidden;
+    if (m) { document.getElementById('gateTitle').textContent = m[0]; document.getElementById('gateText').textContent = m[1]; }
+  }
+  function say(text) { msg.textContent = text; msg.classList.toggle('on', !!text); if (text) msg.focus({ preventScroll: true }); }
+  function ready() { go.disabled = false; go.textContent = '報到'; }
+
+  var OPEN = Date.parse('2026-12-07T12:30:00+08:00'), CLOSE = Date.parse('2026-12-07T18:00:00+08:00'), now = Date.now();
+  setGate(now < OPEN ? 'before' : now < CLOSE ? 'open' : 'closed');
+  if (API) fetch(API).then(function (r) { return r.json(); }).then(function (j) { if (j && j.state) setGate(j.state.checkin); }).catch(function () {});
+
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = f.name.value.trim(), tail = f.tail.value.replace(/\D/g, '');
+    if (!name) { say('請輸入報名時填寫的姓名。'); f.name.focus(); return; }
+    if (!tailBox.hidden && tail.length !== 3) { say('請輸入手機號碼末三碼，共 3 個數字。'); f.tail.focus(); return; }
+    if (!API) { say('報到系統尚未啟用。'); return; }
+    say('');
+    go.disabled = true; go.textContent = '報到中…';
+    var data = { action: 'checkin', name: name };
+    if (!tailBox.hidden) data.tail = tail;
+    if (TEST) data.test = TEST;
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        ready();
+        if (j.ok) {
+          f.hidden = true; ok.hidden = false;
+          document.getElementById('okName').textContent = j.name + '，歡迎出席';
+          document.getElementById('okTime').textContent = (j.already ? '您已於 ' : '報到時間 ') + j.at.slice(5, 16).replace('-', '/') + (j.already ? ' 完成報到' : '');
+          var book = document.getElementById('book'), note = document.getElementById('bookNote');
+          if (j.handbook) {
+            book.href = j.handbook; book.hidden = false;
+            note.textContent = '幾秒後會自動開啟大會手冊；沒有開啟的話請按上面的按鈕。';
+            setTimeout(function () { location.href = j.handbook; }, 2500);
+          } else {
+            note.textContent = '大會手冊尚未上架，請稍後重新整理本頁，或洽現場工作人員。';
+          }
+          ok.focus({ preventScroll: true });
+          return;
+        }
+        if (j.error === 'need_tail') { tailBox.hidden = false; say('報名名單中有同名的人，請再輸入手機號碼末三碼。'); f.tail.focus(); return; }
+        if (j.error === 'not_found') return say('找不到符合的報名紀錄。請確認輸入的姓名和報名時填寫的完全相同，或洽現場工作人員。');
+        if (j.error === 'not_open' || j.error === 'closed') return setGate(j.error === 'closed' ? 'closed' : 'before');
+        say('系統忙線中，請稍等一下再按一次「報到」。');
+      })
+      .catch(function () { ready(); say('網路連線不穩，請確認網路後再按一次「報到」。'); });
+  });
+})();
+</script>
+</body>
+</html>
