@@ -56,7 +56,7 @@
   var f = document.getElementById('f'), msg = document.getElementById('msg'), go = document.getElementById('go');
   var gate = document.getElementById('gate'), ok = document.getElementById('ok'), tailBox = document.getElementById('tailBox');
   var GATE = {
-    before: ['報到尚未開放', '線上報到即將開放，請稍後再掃描一次。'],
+    before: ['報到尚未開放', '線上報到將於 12 月 7 日（一）活動當天開放，請於當天再掃描一次。'],
     closed: ['報到已結束', '本論壇的線上報到已經結束。']
   };
   function setGate(state) {
@@ -68,9 +68,9 @@
   function say(text) { msg.textContent = text; msg.classList.toggle('on', !!text); if (text) msg.focus({ preventScroll: true }); }
   function ready() { go.disabled = false; go.textContent = '報到'; }
 
-  var OPEN = Date.parse('2026-11-20T00:00:00+08:00'), CLOSE = Date.parse('2026-12-07T18:00:00+08:00'), now = Date.now();
+  var OPEN = Date.parse('2026-12-07T00:00:00+08:00'), CLOSE = Date.parse('2026-12-07T18:00:00+08:00'), now = Date.now();
   setGate(now < OPEN ? 'before' : now < CLOSE ? 'open' : 'closed');
-  if (API) fetch(API).then(function (r) { return r.json(); }).then(function (j) { if (j && j.state) setGate(j.state.checkin); }).catch(function () {});
+  if (API) fetch(API).then(function (r) { return r.json(); }).then(function (j) { var t = j && Date.parse(j.now); if (t) setGate(t < OPEN ? 'before' : t < CLOSE ? 'open' : 'closed'); }).catch(function () {});
 
   f.addEventListener('submit', function (e) {
     e.preventDefault();

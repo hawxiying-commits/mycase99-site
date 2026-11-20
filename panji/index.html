@@ -566,9 +566,9 @@
   var form = document.getElementById('form'), summary = document.getElementById('summary'), done = document.getElementById('done');
   var API = (window.PANJI || {}).api || '', TEST = new URLSearchParams(location.search).get('t') || '';
   var gate = document.getElementById('gate'), sendBtn = document.getElementById('send');
-  var OPEN = Date.parse('2026-11-20T00:00:00+08:00'), CLOSE = Date.parse('2026-11-30T12:00:00+08:00');
+  var OPEN = Date.parse('2026-11-23T12:00:00+08:00'), CLOSE = Date.parse('2026-11-30T12:00:00+08:00');
   var GATE = {
-    before: ['報名尚未開放', '報名即將開放，請稍後再回到本頁。'],
+    before: ['報名尚未開放', '報名將於 11 月 23 日（一）中午 12:00 開放，請屆時再回到本頁。'],
     closed: ['報名已截止', '本論壇報名已於 11 月 30 日（一）中午 12:00 截止。錄取名單將於同日 14:00 公布於國立故宮博物院官網「最新消息」。']
   };
   function setGate(state) {
@@ -582,8 +582,8 @@
     document.getElementById('again').remove();
     var t0 = Date.now();
     setGate(t0 < OPEN ? 'before' : t0 < CLOSE ? 'open' : 'closed');
-    // 以後端時間為準，手機時鐘不準也不會誤判
-    fetch(API).then(function (r) { return r.json(); }).then(function (j) { if (j && j.state) setGate(j.state.register); }).catch(function () {});
+    // 用後端回報的時間對照本頁的開放、截止時間，手機時鐘不準也不會誤判
+    fetch(API).then(function (r) { return r.json(); }).then(function (j) { var t = j && Date.parse(j.now); if (t) setGate(t < OPEN ? 'before' : t < CLOSE ? 'open' : 'closed'); }).catch(function () {});
     if (t0 < OPEN && OPEN - t0 < 864e5) setTimeout(function () { setGate('open'); }, OPEN - t0 + 800);
   }
   var rules = {
