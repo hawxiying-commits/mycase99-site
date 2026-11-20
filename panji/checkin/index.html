@@ -68,7 +68,7 @@
   function say(text) { msg.textContent = text; msg.classList.toggle('on', !!text); if (text) msg.focus({ preventScroll: true }); }
   function ready() { go.disabled = false; go.textContent = '報到'; }
 
-  var OPEN = Date.parse('2026-12-07T00:00:00+08:00'), CLOSE = Date.parse('2026-12-07T18:00:00+08:00'), now = Date.now();
+  var OPEN = Date.parse('2026-11-20T00:00:00+08:00'), CLOSE = Date.parse('2026-12-07T18:00:00+08:00'), now = Date.now();
   setGate(now < OPEN ? 'before' : now < CLOSE ? 'open' : 'closed');
   if (API) fetch(API).then(function (r) { return r.json(); }).then(function (j) { var t = j && Date.parse(j.now); if (t) setGate(t < OPEN ? 'before' : t < CLOSE ? 'open' : 'closed'); }).catch(function () {});
 
