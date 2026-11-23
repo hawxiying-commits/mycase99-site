@@ -9,7 +9,7 @@
 <meta property="og:title" content="「磐基永續－博物館藏品盤點之理論與實務」論壇線上報名">
 <meta property="og:description" content="2026 年 12 月 7 日（一）14:00–16:30，國立故宮博物院第一展覽館 B1 多媒體放映室。報名期間 11 月 23 日 12:00 至 11 月 30 日 12:00，免費參加。">
 <meta property="og:url" content="https://mycase99.com/panji/">
-<meta property="og:image" content="https://mycase99.com/panji/assets/share-3.jpg">
+<meta property="og:image" content="https://mycase99.com/panji/assets/share-4.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -99,8 +99,12 @@
   /* 首屏：主視覺＋活動摘要 */
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .hero { margin-top: 14px; padding-inline: var(--gutter); }
-  .kv { border: 1.5px solid var(--pine-deep); background: #fdf2ea; }
-  .kv img { display: block; width: 100%; height: auto; }
+  .kv { border: 1.5px solid var(--pine-deep); background: #fcf2e9; aspect-ratio: 5 / 3; display: grid; place-items: center; padding: 28px 18px; text-align: center; }
+  .kv h1 { font-family: var(--serif); color: var(--pine-deep); line-height: 1.3; }
+  .kv h1 > span { display: block; }
+  .kv .k1 { font-weight: 900; font-size: clamp(2.5rem, 13vw, 4rem); letter-spacing: .14em; margin-right: -.14em; line-height: 1.15; }
+  .kv .k2 { margin-top: .9em; font-weight: 700; font-size: clamp(1.0625rem, 4.8vw, 1.375rem); letter-spacing: .08em; color: var(--pine); }
+  .kv .k3 { margin-top: .35em; font-weight: 700; font-size: clamp(1.0625rem, 4.8vw, 1.375rem); letter-spacing: .5em; margin-right: -.5em; color: var(--pine); }
   .brief { margin-top: 20px; padding-top: 20px; border-top: 3px dotted var(--pine); }
   .when { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
   .chip { display: inline-block; padding: 3px 26px 3px 22px; background: var(--chip); color: var(--pine-deep); font-weight: 700; font-size: 1.625rem; line-height: 1.35; font-variant-numeric: tabular-nums; clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%); }
@@ -271,6 +275,7 @@
     .dock { display: none; }
     .hero { display: grid; grid-template-columns: 6fr 5fr; gap: 0 52px; align-items: center; max-width: 1120px; margin: 28px auto 0; padding-inline: var(--gutter); }
     .brief { margin-top: 0; padding-top: 24px; }
+    .kv { aspect-ratio: 1280 / 1317; }
     .chip { font-size: 1.875rem; }
     .jump { max-width: 1120px; margin-inline: auto; margin-top: 56px; border-inline: 1px solid var(--seam); }
     section { padding-top: 80px; }
@@ -312,8 +317,8 @@
 </svg>
 
 <header class="hero">
-  <h1 class="sr">「磐基永續－博物館藏品盤點之理論與實務」論壇</h1>
-  <div class="kv"><img src="assets/kv.jpg" width="1280" height="1317" alt="論壇主視覺：綠色與金色點描的色塊、波紋與葉片，五座博物館建築線畫，中央是「磐基永續」四個大字，上方標題為「博物館藏品盤點之理論與實務論壇」，副標為國際經驗×制度程序、故宮實務×盤點規劃、跨館觀點×永續管理。"></div>
+  <!-- 主視覺暫時撤下（2026-11-23）：先用原色空白底放論壇名稱，新主視覺到了再換回圖片 -->
+  <div class="kv"><h1 aria-label="「磐基永續－博物館藏品盤點之理論與實務」論壇"><span class="k1">磐基永續</span><span class="k2"><span class="nb">博物館藏品盤點之</span><span class="nb">理論與實務</span></span><span class="k3">論壇</span></h1></div>
   <div class="brief">
     <p class="when"><span class="chip">2026.12.07<small>（一）</small></span><span class="hours"><span class="nb">13:30 報到</span><span class="nb">14:00–16:30 論壇</span></span></p>
     <dl class="facts">
