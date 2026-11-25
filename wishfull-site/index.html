@@ -66,7 +66,7 @@
   .nav .btn{min-height:46px;font-size:16px;padding:0 20px}
 
   /* hero */
-  .hero{padding:48px 0 0}
+  .hero{padding:24px 0 0}
   .hero-top{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:end}
   .hero h1{font-size:clamp(38px,5.4vw,64px);line-height:1.22;margin-bottom:20px}
   .hero h1 span{color:var(--rose-ink)}
@@ -103,9 +103,9 @@
   .door .tag-stock{background:#fff;color:var(--ink)}
 
   /* clothesline */
-  .line-sec{padding:72px 0 8px;overflow:hidden}
+  .line-sec{padding:36px 0 0;overflow:hidden}
   .line-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 24px;flex-wrap:wrap}
-  .line-head h2{font-size:clamp(24px,3vw,32px)}
+  .line-head .line-title{font:700 clamp(22px,3vw,30px)/1.35 var(--serif);color:var(--ink);letter-spacing:.01em}
   .line-head p{margin:0;color:var(--muted);font-size:16px}
   .line{position:relative;height:var(--line-h,330px);margin-top:4px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
   .line.dragging{cursor:grabbing}
@@ -261,7 +261,7 @@
     .mbar .btn{min-height:52px;font-size:17px;padding:0 10px}
   }
   @media (max-width:760px){
-    .line-sec{padding-top:48px}
+    .line-sec{padding-top:24px}
     .line{--line-h:290px;--cw:132px}
     .peg .label b{font-size:14px}
     .peg .label small{font-size:12px}
@@ -304,6 +304,16 @@
 
 <main id="top">
 
+  <section class="line-sec" aria-labelledby="line-h">
+    <div class="wrap line-head">
+      <p id="line-h" class="line-title">曬衣繩上，都是現在就有的衣服</p>
+      <p>拉一拉繩子，或點衣服看詳細</p>
+    </div>
+    <div class="line" id="line" aria-hidden="true">
+      <svg class="rope"><path/><path/></svg>
+    </div>
+  </section>
+
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap">
       <div class="hero-top">
@@ -344,16 +354,6 @@
           <span class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
         </a>
       </nav>
-    </div>
-  </section>
-
-  <section class="line-sec" aria-labelledby="line-h">
-    <div class="wrap line-head">
-      <h2 id="line-h">曬衣繩上，都是現在就有的衣服</h2>
-      <p>拉一拉繩子，或點衣服看詳細</p>
-    </div>
-    <div class="line" id="line" aria-hidden="true">
-      <svg class="rope"><path/><path/></svg>
     </div>
   </section>
 
