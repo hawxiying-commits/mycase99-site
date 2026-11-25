@@ -10,7 +10,11 @@
 <!-- 給業主確認用的展示版：正式上線前把下一行 noindex 拿掉 -->
 <meta name="robots" content="noindex">
 <meta property="og:url" content="https://mycase99.com/wishfull-site/">
-<meta property="og:image" content="https://mycase99.com/wishfull-site/assets/products/spring-velcro-rose-1.jpg">
+<meta property="og:image" content="https://mycase99.com/wishfull-site/assets/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,6 +101,27 @@
   .tag-stock{background:var(--ink);color:#fff}
   .tag-mod{background:var(--rose-soft);color:var(--rose-ink);box-shadow:inset 0 0 0 1.5px var(--rose)}
   .door .tag-stock{background:#fff;color:var(--ink)}
+
+  /* clothesline */
+  .line-sec{padding:72px 0 8px;overflow:hidden}
+  .line-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 24px;flex-wrap:wrap}
+  .line-head h2{font-size:clamp(24px,3vw,32px)}
+  .line-head p{margin:0;color:var(--muted);font-size:16px}
+  .line{position:relative;height:var(--line-h,330px);margin-top:4px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+  .line.dragging{cursor:grabbing}
+  .rope{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+  .rope path{fill:none;stroke:#8C7A63;stroke-width:2.2;stroke-linecap:round}
+  .rope path + path{stroke:#B8A588;stroke-width:1;stroke-dasharray:2 5}
+  .peg{position:absolute;left:0;top:0;width:var(--cw,168px);transform-origin:50% 0;text-decoration:none;color:var(--ink);will-change:transform;-webkit-tap-highlight-color:transparent}
+  .peg .pin{position:absolute;left:50%;top:-14px;width:16px;height:42px;margin-left:-8px;z-index:2;filter:drop-shadow(0 2px 2px rgba(51,40,31,.25))}
+  .peg .cloth{display:block;background:#fff;padding:7px 7px 0;border-radius:4px;box-shadow:0 10px 18px -6px rgba(51,40,31,.28),0 2px 4px rgba(51,40,31,.08)}
+  .peg img{width:100%;aspect-ratio:var(--ca,15/16);object-fit:cover;object-position:center 20%;border-radius:2px;pointer-events:none;background:#F4EFE6}
+  .peg .label{display:block;padding:8px 2px 10px;line-height:1.4}
+  .peg .label b{display:block;font:700 15px/1.4 var(--serif)}
+  .peg .label small{display:block;font-size:13px;color:var(--muted)}
+  .peg:hover .cloth{box-shadow:0 16px 26px -8px rgba(51,40,31,.34),0 2px 4px rgba(51,40,31,.08)}
+  .prod.flash{animation:flash 1.8s cubic-bezier(.2,.8,.2,1)}
+  @keyframes flash{0%,40%{box-shadow:0 0 0 4px var(--gold)}100%{box-shadow:0 0 0 0 rgba(184,137,42,0)}}
 
   /* menu */
   #menu{padding-top:88px}
@@ -235,6 +260,12 @@
     .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,253,248,.97);border-top:1px solid var(--line)}
     .mbar .btn{min-height:52px;font-size:17px;padding:0 10px}
   }
+  @media (max-width:760px){
+    .line-sec{padding-top:48px}
+    .line{--line-h:290px;--cw:132px}
+    .peg .label b{font-size:14px}
+    .peg .label small{font-size:12px}
+  }
   @media (max-width:560px){
     .prod-grid{grid-template-columns:1fr}
     .door{grid-template-columns:76px 1fr auto}
@@ -251,6 +282,7 @@
   <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-scissors" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.2 8.2 20 20M8.2 15.8 20 4"/></g></symbol>
+  <symbol id="i-clip" viewBox="0 0 16 42"><rect x="2" y="0" width="12" height="42" rx="3" fill="#D8B37C"/><path d="M8 1v40" stroke="#A9814B" stroke-width="1.2"/><rect x="0" y="15" width="16" height="6" rx="2" fill="#8F8A84"/><rect x="0" y="16.5" width="16" height="1.2" fill="#B9B4AE"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-6 6 6-6 6"/></symbol>
 </svg>
 
@@ -312,6 +344,16 @@
           <span class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
         </a>
       </nav>
+    </div>
+  </section>
+
+  <section class="line-sec" aria-labelledby="line-h">
+    <div class="wrap line-head">
+      <h2 id="line-h">曬衣繩上，都是現在就有的衣服</h2>
+      <p>拉一拉繩子，或點衣服看詳細</p>
+    </div>
+    <div class="line" id="line" aria-hidden="true">
+      <svg class="rope"><path/><path/></svg>
     </div>
   </section>
 
@@ -519,7 +561,7 @@
       ? '<div class="thumbs" role="group" aria-label="' + esc(p.品名) + ' 的照片">' + pics.map((u, i) =>
           '<button type="button" aria-pressed="' + (i === 0) + '" aria-label="看第 ' + (i + 1) + ' 張照片"><img src="' + esc(u) + '" alt="" loading="lazy" referrerpolicy="no-referrer"></button>').join('') + '</div>'
       : '';
-    return '<article class="prod" data-type="' + (isMod(p) ? '改製' : '現貨') + '" data-cat="' + esc(p.分類) + '">' +
+    return '<article class="prod" id="p-' + all.indexOf(p) + '" data-type="' + (isMod(p) ? '改製' : '現貨') + '" data-cat="' + esc(p.分類) + '">' +
       '<div class="gal"><div class="main">' + main + '</div>' + thumbs + '</div>' +
       '<div class="body">' +
         '<div class="tags">' + tagHTML(p) + (p.開合 ? '<span class="how">' + esc(p.開合) + '開合</span>' : '') + '</div>' +
@@ -575,6 +617,119 @@
       (c === '現貨' ? '<svg width="16" height="16"><use href="#i-check"/></svg>' : c === '改製' ? '<svg width="16" height="16"><use href="#i-scissors"/></svg>' : '') +
       esc(c) + ' <small>' + n + '</small></button>').join('');
     render();
+    buildLine();
+    startLine();
+  }
+
+  /* ---------- 曬衣繩：只掛現貨，點衣服跳到產品卡 ---------- */
+  const lineEl = $('#line');
+  function shortName(p){ return String(p.品名 || '').replace(/（.*?）|\(.*?\)/g, '').trim(); }
+  function buildLine(){
+    if (!lineEl) return;
+    lineEl.querySelectorAll('.peg').forEach(n => n.remove());
+    const stock = all.filter(p => !isMod(p));
+    if (!stock.length){ lineEl.closest('section').hidden = true; return; }
+    lineEl.closest('section').hidden = false;
+    // 重複排到夠長，才能一直轉不留空
+    const reps = Math.max(1, Math.ceil(16 / stock.length));
+    let html = '';
+    for (let r = 0; r < reps; r++) stock.forEach(p => {
+      const id = 'p-' + all.indexOf(p);
+      html += '<a class="peg" href="#' + id + '" tabindex="-1" draggable="false">' +
+        '<svg class="pin"><use href="#i-clip"/></svg>' +
+        '<span class="cloth"><img src="' + esc(imgList(p.照片)[0]) + '" alt="" draggable="false" loading="lazy" referrerpolicy="no-referrer">' +
+        '<span class="label"><b>' + esc(shortName(p)) + '</b><small>' + esc(p.款式 || '') + '</small></span></span></a>';
+    });
+    lineEl.insertAdjacentHTML('beforeend', html);
+  }
+
+  let lineStarted = false;
+  function startLine(){
+    if (!lineEl || lineStarted) return;
+    const pegs = [...lineEl.querySelectorAll('.peg')];
+    if (!pegs.length) return;
+    lineStarted = true;
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const paths = lineEl.querySelectorAll('.rope path');
+    const st = pegs.map((_, i) => ({ a: 0, w: 0, ph: i * 1.7 }));
+    let W = 0, gap = 0, top = 34, sag = 0, L = 0;
+    let offset = 0, vel = 0, auto = 0, drag = null, running = true, last = performance.now(), hover = false, moved = 0;
+
+    function layout(){
+      W = lineEl.clientWidth;
+      const small = W < 600;
+      gap = small ? 158 : 222;
+      sag = small ? 30 : 52;
+      auto = still ? 0 : (small ? 0.018 : 0.024);   // 每毫秒移動的像素
+      L = pegs.length * gap;
+      const d = 'M -40 ' + (top - 4) + ' Q ' + (W / 2) + ' ' + (top + 2 * sag) + ' ' + (W + 40) + ' ' + (top - 4);
+      paths.forEach(p => p.setAttribute('d', d));
+      if (!vel) vel = auto;
+    }
+    const ropeY = x => top + 4 * sag * (x / W) * (1 - x / W);
+
+    function frame(now){
+      const dt = Math.min(48, now - last); last = now;
+      const prev = vel;
+      if (!drag){
+        const target = hover ? 0 : auto;
+        vel += (target - vel) * Math.min(1, dt * 0.004);
+        offset += vel * dt;
+      }
+      const accel = (vel - prev) / Math.max(dt, 1);
+      pegs.forEach((el, i) => {
+        let x = ((i * gap + offset) % L + L) % L - gap;
+        const s = st[i];
+        if (x < -gap || x > W + gap){ el.style.visibility = 'hidden'; return; }
+        el.style.visibility = '';
+        const cx = x + el.offsetWidth / 2;
+        const y = ropeY(Math.max(0, Math.min(W, cx))) - 4;
+        if (!still){
+          const wind = Math.sin(now * 0.0011 + s.ph) * 1.1;
+          s.w += (-0.0016 * (s.a - wind) - accel * 9) * dt;
+          s.w *= Math.pow(0.9, dt / 16);
+          s.a = Math.max(-28, Math.min(28, s.a + s.w * dt));
+        }
+        el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + s.a.toFixed(2) + 'deg)';
+      });
+      if (running) requestAnimationFrame(frame);
+    }
+
+    lineEl.addEventListener('pointerdown', e => {
+      drag = { x: e.clientX, t: performance.now(), id: e.pointerId }; moved = 0;
+    });
+    lineEl.addEventListener('pointermove', e => {
+      if (!drag) return;
+      const now = performance.now(), dx = e.clientX - drag.x;
+      offset += dx; moved += Math.abs(dx);
+      if (moved > 6 && !lineEl.classList.contains('dragging')){ lineEl.classList.add('dragging'); try { lineEl.setPointerCapture(drag.id); } catch (_) {} }
+      vel = vel * 0.6 + (dx / Math.max(now - drag.t, 1)) * 0.4;
+      drag = { x: e.clientX, t: now };
+    });
+    const endDrag = () => { drag = null; lineEl.classList.remove('dragging'); };
+    lineEl.addEventListener('pointerup', endDrag);
+    lineEl.addEventListener('pointercancel', endDrag);
+    lineEl.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') hover = true; });
+    lineEl.addEventListener('pointerleave', () => { hover = false; });
+    lineEl.addEventListener('click', e => {
+      const a = e.target.closest('.peg'); if (!a) return;
+      e.preventDefault();
+      if (moved > 6) return;                    // 是拉繩子，不是點衣服
+      const card = document.getElementById(a.getAttribute('href').slice(1));
+      if (!card) return;
+      setFilter('全部');
+      card.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
+      card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+    });
+    addEventListener('resize', layout);
+    // 看不到曬衣繩時停下來，省電
+    new IntersectionObserver(es => {
+      const vis = es[0].isIntersecting;
+      if (vis && !running){ running = true; last = performance.now(); requestAnimationFrame(frame); }
+      running = vis;
+    }).observe(lineEl);
+    layout();
+    requestAnimationFrame(frame);
   }
 
   filters.addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) setFilter(b.dataset.f); });
@@ -593,6 +748,7 @@
       .then(t => setup(parseCSV(t)))
       .catch(() => setup(local));
   } else if (!list.querySelector('.prod')) setup(local);   // 預覽版已預先畫好選單時不重畫
+  else startLine();
 })();
 </script>
 </body>
