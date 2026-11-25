@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>願滿 Wishfull｜易穿脫照護服・產品選單｜高雄</title>
+<meta name="description" content="願滿 Wishfull 易穿脫照護服：現貨家居服與成衣改製。魔鬼氈、拉鍊、大鈕扣，衣褲整片打開，躺著就能穿脫。高雄三民區展示間，預約試穿，LINE 詢問。">
+<meta property="og:title" content="願滿 Wishfull｜易穿脫照護服">
+<meta property="og:description" content="躺著就能穿脫的照護服。現貨家居服、成衣改製，一次看完產品選單。">
+<!-- 給業主確認用的展示版：正式上線前把下一行 noindex 拿掉 -->
+<meta name="robots" content="noindex">
+<meta property="og:url" content="https://mycase99.com/wishfull-site/">
+<meta property="og:image" content="https://mycase99.com/wishfull-site/assets/products/spring-velcro-rose-1.jpg">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF7EF; --paper:#FFFDF8; --sand:#F2E8D8; --white:#fff;
+    --gold:#B8892A; --gold-ink:#7E5B14;
+    --rose:#C99AA5; --rose-soft:#F5E7EA; --rose-ink:#874B5C;
+    --ink:#33281F; --muted:#665951; --line:#E4D8C5;
+    --green:#0B8A43; --green-dark:#08733A;
+    --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",system-ui,sans-serif;
+    --r:14px; --shadow:0 8px 24px rgba(51,40,31,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{margin:0;background:var(--cream);color:var(--ink);font:400 18px/1.8 var(--sans);-webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.35;margin:0;letter-spacing:.01em;text-wrap:balance}
+  p{text-wrap:pretty}
+  .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+  section{padding:96px 0}
+  .sec-head{max-width:40em;margin-bottom:40px}
+  .sec-head h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+  .sec-head p{color:var(--muted);margin:0}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border-radius:999px;font:700 18px/1 var(--sans);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .2s, transform .2s cubic-bezier(.2,.8,.2,1)}
+  .btn:hover{transform:translateY(-1px)}
+  .btn svg{width:22px;height:22px;flex:none}
+  .btn-line{background:var(--green);color:#fff}
+  .btn-line:hover{background:var(--green-dark)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost:hover{background:var(--paper)}
+
+  /* header */
+  header{position:sticky;top:0;z-index:20;background:rgba(251,247,239,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{height:46px;width:auto}
+  .brand b{font-family:var(--serif);font-size:24px;letter-spacing:.08em;display:block;line-height:1.1}
+  .brand small{display:block;font-size:12px;letter-spacing:.25em;color:var(--gold-ink);line-height:1.4}
+  .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+  .nav ul a{text-decoration:none;font-size:17px;color:var(--muted);padding:6px 0}
+  .nav ul a:hover{color:var(--ink)}
+  .nav ul a.strong{color:var(--ink);font-weight:700}
+  .nav .btn{min-height:46px;font-size:16px;padding:0 20px}
+
+  /* hero */
+  .hero{padding:48px 0 0}
+  .hero-top{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:end}
+  .hero h1{font-size:clamp(38px,5.4vw,64px);line-height:1.22;margin-bottom:20px}
+  .hero h1 span{color:var(--rose-ink)}
+  .lead{font-size:20px;color:var(--muted);max-width:28em;margin:0 0 22px}
+  .fits{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px;padding:0;list-style:none}
+  .fits li{font-size:15px;padding:4px 14px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--muted)}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .showroom{display:inline-flex;align-items:flex-start;gap:10px;margin:22px 0 40px;text-decoration:none;color:var(--ink);padding:10px 16px 10px 12px;border-radius:12px;transition:background-color .2s}
+  .showroom:hover{background:var(--paper)}
+  .showroom svg{width:24px;height:24px;flex:none;color:var(--rose-ink);margin-top:2px}
+  .showroom b{display:block;font-weight:500;line-height:1.5}
+  .showroom span{display:block;font-size:15px;color:var(--muted);line-height:1.5;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+  .hero-photo{position:relative;align-self:stretch}
+  .hero-photo img{width:100%;height:100%;max-height:580px;object-fit:cover;object-position:center 15%;border-radius:240px 240px 0 0}
+
+  /* doors: two ways in */
+  .doors{display:grid;grid-template-columns:1fr 1fr;background:var(--ink);color:#F6EEE2;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+  .door{display:grid;grid-template-columns:132px 1fr auto;align-items:center;gap:22px;padding:22px 26px;text-decoration:none;transition:background-color .25s}
+  .door + .door{border-left:1px solid rgba(255,255,255,.14)}
+  .door:hover{background:rgba(255,255,255,.06)}
+  .door img{width:132px;height:110px;object-fit:cover;border-radius:10px;background:#fff}
+  .door h2{font-size:26px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .door p{margin:4px 0 0;color:#D9CCBC;font-size:16px;line-height:1.6}
+  .door .arrow{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .door:hover .arrow{transform:translateX(4px)}
+  .door .arrow svg{width:20px;height:20px}
+  .door .count{font-family:var(--sans);font-size:14px;font-weight:500;padding:2px 10px;border-radius:999px;background:rgba(255,255,255,.12);color:#F6EEE2}
+
+  /* type badges: text + icon, never colour alone */
+  .tag{display:inline-flex;align-items:center;gap:6px;font:700 14px/1 var(--sans);padding:6px 11px;border-radius:999px;letter-spacing:.04em;white-space:nowrap}
+  .tag svg{width:15px;height:15px}
+  .tag-stock{background:var(--ink);color:#fff}
+  .tag-mod{background:var(--rose-soft);color:var(--rose-ink);box-shadow:inset 0 0 0 1.5px var(--rose)}
+  .door .tag-stock{background:#fff;color:var(--ink)}
+
+  /* menu */
+  #menu{padding-top:88px}
+  .menu-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:20px}
+  .menu-head h2{font-size:clamp(30px,4.2vw,44px)}
+  .legend{display:grid;gap:8px;margin:0;font-size:16px;color:var(--muted)}
+  .legend div{display:flex;align-items:center;gap:12px}
+  .legend dt{flex:none}
+  .legend dd{margin:0}
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 24px;position:sticky;top:72px;z-index:5;padding:12px 0;background:linear-gradient(var(--cream) 80%,rgba(251,247,239,0))}
+  .chip{min-height:46px;padding:0 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);font:500 16px var(--sans);color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background-color .2s,color .2s,border-color .2s}
+  .chip:hover{border-color:var(--ink);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .chip small{font-size:13px;opacity:.75}
+  .group-title{font-size:24px;margin:8px 0 18px;display:flex;align-items:center;gap:12px}
+  .grp + .grp .group-title{margin-top:56px}
+  .grp[hidden],.prod[hidden]{display:none}
+  .group-title .note{font:400 15px var(--sans);color:var(--muted)}
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .prod{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+  .gal .main{aspect-ratio:1/1;background:var(--white);display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+  .gal .main > img{width:100%;height:100%;object-fit:contain}
+  .gal .thumbs{display:flex;gap:8px;padding:10px 14px 0;overflow-x:auto;scrollbar-width:none}
+  .gal .thumbs button{flex:none;width:58px;height:58px;padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;background:#fff;cursor:pointer;opacity:.7;transition:opacity .2s,border-color .2s}
+  .gal .thumbs button[aria-pressed="true"]{border-color:var(--ink);opacity:1}
+  .gal .thumbs button:hover{opacity:1}
+  .gal .thumbs img{width:100%;height:100%;object-fit:cover}
+  .nophoto{display:grid;justify-items:center;gap:10px;color:var(--muted);font-size:15px;background:var(--rose-soft);width:100%;height:100%;align-content:center}
+  .nophoto img{width:64px;opacity:.6}
+  .prod .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .prod .tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .prod .how{font-size:14px;color:var(--gold-ink);font-weight:500}
+  .prod h3{font-size:20px;line-height:1.45;text-wrap:wrap}
+  .prod .style{font-size:15px;color:var(--muted);margin:0}
+  .sizes{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:15px}
+  .sizes span{padding:2px 10px;border:1px solid var(--line);border-radius:6px;background:#fff}
+  .sizes b{font-weight:500;color:var(--muted);margin-right:2px}
+  .prod .desc{font-size:16px;color:var(--muted);line-height:1.7;margin:2px 0 0}
+  .prod .foot{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px dashed var(--line)}
+  .price{font-family:var(--serif);font-size:24px;font-weight:700}
+  .price s{font:400 14px var(--sans);color:var(--muted);margin-left:6px}
+  .price.ask{font:500 16px var(--sans);color:var(--muted)}
+  .prod .btn{min-height:48px;font-size:16px;padding:0 18px}
+  .menu-status{color:var(--muted)}
+  .custom-cta{margin-top:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:28px 32px;border-radius:var(--r);background:var(--rose-soft)}
+  .custom-cta h3{font-size:22px}
+  .custom-cta p{margin:4px 0 0;color:var(--muted)}
+
+  /* steps */
+  .steps{background:var(--sand)}
+  .steps-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .steps ol{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:28px}
+  .steps li{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:start}
+  .steps li::before{counter-increment:s;content:counter(s);width:64px;height:64px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font:700 28px var(--serif);color:var(--gold-ink)}
+  .steps li h3{font-size:22px;margin:6px 0 2px}
+  .steps li p{margin:0;color:var(--muted)}
+  .steps .note{margin:32px 0 0;font-size:17px;color:var(--ink);background:var(--paper);border-radius:var(--r);padding:18px 22px}
+  .detail-pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .detail-pics figure{margin:0;position:relative;border-radius:var(--r);overflow:hidden;background:#fff;aspect-ratio:1/1}
+  .detail-pics figure:first-child{grid-row:span 2;aspect-ratio:auto}
+  .detail-pics img{width:100%;height:100%;object-fit:cover}
+  .detail-pics figcaption{position:absolute;left:12px;bottom:12px;right:12px;background:rgba(255,253,248,.95);border-radius:10px;padding:8px 12px;font-size:15px;line-height:1.5}
+
+  /* story */
+  .story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+  .story h2{font-size:clamp(28px,4vw,40px);margin-bottom:24px}
+  .story p{margin:0 0 18px}
+  .story-quote{margin:0;text-align:center;padding:48px 36px;background:var(--paper);border-radius:var(--r);border:1px solid var(--line)}
+  .story-quote img{width:96px;margin:0 auto 22px}
+  .story-quote p{font-family:var(--serif);font-size:24px;line-height:1.7;margin:0}
+  .story-quote span{display:block;margin-top:16px;color:var(--muted);font-size:15px}
+
+  /* promise */
+  .promise{padding:0 0 96px}
+  .promise-box{background:var(--ink);color:#F6EEE2;border-radius:24px;padding:56px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+  .promise-box h2{font-size:clamp(28px,3.6vw,38px);margin:0 0 14px}
+  .promise-box p{margin:0;color:#DCCFBF}
+  .promise-box .btn-ghost{color:#fff;border-color:#fff}
+  .promise-box .btn-ghost:hover{background:rgba(255,255,255,.08)}
+
+  /* trust */
+  .trust{background:var(--paper);border-block:1px solid var(--line);padding:72px 0}
+  .trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .trust figure{margin:0}
+  .trust blockquote{margin:0;font-family:var(--serif);font-size:28px;line-height:1.55}
+  .trust cite{display:block;margin-top:12px;font:400 15px var(--sans);color:var(--muted);font-style:normal}
+  .press h2{font-size:20px;margin-bottom:8px}
+  .press ul{list-style:none;margin:0;padding:0}
+  .press li{padding:14px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .press li span{color:var(--muted);font-size:15px}
+
+  /* visit */
+  .visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:stretch}
+  .info{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:36px}
+  .info dl{margin:0 0 28px;display:grid;grid-template-columns:auto 1fr;gap:14px 20px}
+  .info dt{color:var(--gold-ink);font-weight:500}
+  .info dd{margin:0}
+  .info dd a{text-decoration-color:var(--line);text-underline-offset:4px}
+  .map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:380px;background:var(--sand)}
+  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block;position:relative;z-index:1}
+  .map{position:relative}
+  .map-fallback{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:6px;text-align:center;padding:24px}
+  .map-fallback svg{width:36px;height:36px;color:var(--rose-ink);margin-bottom:6px}
+  .map-fallback b{font-size:20px}
+  .map-fallback span{color:var(--muted);font-size:15px;margin-bottom:14px}
+
+  footer{padding:40px 0 120px;color:var(--muted);font-size:15px;text-align:center}
+  footer .brand{justify-content:center;margin-bottom:10px}
+
+  .mbar{display:none}
+
+  @media (max-width:1020px){
+    .prod-grid{grid-template-columns:repeat(2,1fr)}
+    .nav ul{display:none}
+    .door{grid-template-columns:96px 1fr auto;gap:16px;padding:18px}
+    .door img{width:96px;height:96px}
+  }
+  @media (max-width:760px){
+    body{font-size:17px}
+    section{padding:64px 0}
+    #menu{padding-top:56px}
+    .hero{padding-top:24px}
+    .hero-top,.steps-grid,.story-grid,.visit-grid,.trust-grid,.promise-box{grid-template-columns:1fr}
+    .hero-top{gap:0}
+    .showroom{margin:18px 0 28px}
+    .hero-photo img{max-height:380px;border-radius:180px 180px 0 0}
+    .doors{grid-template-columns:1fr;border-radius:0 0 var(--r) var(--r)}
+    .door + .door{border-left:0;border-top:1px solid rgba(255,255,255,.14)}
+    .door h2{font-size:22px}
+    .story-grid{gap:32px}
+    .promise-box{padding:36px 24px}
+    .nav .btn{display:none}
+    .filters{flex-wrap:nowrap;overflow-x:auto;margin-inline:-20px;padding-inline:20px;scrollbar-width:none}
+    .chip{flex:none}
+    .custom-cta{padding:24px}
+    .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,253,248,.97);border-top:1px solid var(--line)}
+    .mbar .btn{min-height:52px;font-size:17px;padding:0 10px}
+  }
+  @media (max-width:560px){
+    .prod-grid{grid-template-columns:1fr}
+    .door{grid-template-columns:76px 1fr auto}
+    .door img{width:76px;height:76px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-line" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 4 3.5 7.3 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8Zm-3.6 10.4H6.5a.5.5 0 0 1-.5-.5V9a.5.5 0 0 1 1 0v3.4h1.4a.5.5 0 0 1 0 1Zm2-.5a.5.5 0 0 1-1 0V9a.5.5 0 0 1 1 0v3.9Zm4.7 0a.5.5 0 0 1-.9.3l-2-2.7v2.4a.5.5 0 0 1-1 0V9a.5.5 0 0 1 .9-.3l2 2.7V9a.5.5 0 0 1 1 0v3.9Zm3.1-2.5a.5.5 0 0 1 0 1h-1.4v.9h1.4a.5.5 0 0 1 0 1h-1.9a.5.5 0 0 1-.5-.5V9c0-.3.2-.5.5-.5h1.9a.5.5 0 0 1 0 1h-1.4v.9h1.4Z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-scissors" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.2 8.2 20 20M8.2 15.8 20 4"/></g></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-6 6 6-6 6"/></symbol>
+</svg>
+
+<header>
+  <nav class="wrap nav" aria-label="主選單">
+    <a class="brand" href="#top" aria-label="願滿 Wishfull 回到頂端">
+      <img src="assets/emblem.png" alt="">
+      <span><b>願滿</b><small>WISHFULL</small></span>
+    </a>
+    <ul>
+      <li><a class="strong" href="#menu">產品選單</a></li>
+      <li><a href="#how">怎麼穿</a></li>
+      <li><a href="#story">品牌故事</a></li>
+      <li><a href="#visit">預約展示間</a></li>
+    </ul>
+    <a class="btn btn-line js-line" href="https://line.me/R/ti/p/%40988mcfny" target="_blank" rel="noopener"><svg><use href="#i-line"/></svg>LINE 詢問</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-top">
+        <div>
+          <h1 id="hero-h">躺著就能穿脫的<br><span>照護服</span></h1>
+          <p class="lead">衣褲整片打開，用魔鬼氈、拉鍊、大鈕扣固定。不用抬手、不用彎腰，換衣服少一點拉扯，也多保留一點尊嚴。</p>
+          <ul class="fits" aria-label="適合">
+            <li>術後恢復</li><li>長期臥床</li><li>中風・行動不便</li><li>打點滴・有傷口</li><li>使用尿袋</li>
+          </ul>
+          <div class="cta">
+            <a class="btn btn-line js-line" href="https://line.me/R/ti/p/%40988mcfny" target="_blank" rel="noopener"><svg><use href="#i-line"/></svg>LINE 詢問尺寸</a>
+            <a class="btn btn-ghost js-tel" href="tel:0958844378"><svg><use href="#i-phone"/></svg><span class="js-phone-text">0958 844 378</span></a>
+          </div>
+          <a class="showroom js-maps" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%AB%98%E9%9B%84%E5%B8%82%E4%B8%89%E6%B0%91%E5%8D%80%E6%9C%9D%E9%99%BD%E8%A1%9772%E8%99%9F1%E6%A8%93" target="_blank" rel="noopener">
+            <svg><use href="#i-pin"/></svg>
+            <span style="text-decoration:none;color:inherit;font-size:inherit"><b>高雄三民區展示間，可預約試穿</b><span class="js-address-text">高雄市三民區朝陽街72號1樓・點開地圖</span></span>
+          </a>
+        </div>
+        <div class="hero-photo">
+          <img src="assets/products/spring-velcro-rose-1.jpg" alt="穿著豆沙粉易穿脫家居服的模特兒，肩線與褲管兩側都打開" width="850" height="1000">
+        </div>
+      </div>
+      <nav class="doors" aria-label="兩種選擇">
+        <a class="door" href="#menu" data-go="現貨">
+          <img src="assets/products/fw-velcro-pink-3.jpg" alt="">
+          <div>
+            <h2><span class="tag tag-stock"><svg><use href="#i-check"/></svg>現貨</span>易穿脫家居服 <span class="count js-count-stock"></span></h2>
+            <p>做好的易穿脫衣褲，有尺寸就能直接買。</p>
+          </div>
+          <span class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+        <a class="door" href="#menu" data-go="改製">
+          <img src="assets/products/kaizhi-dress-2.jpg" alt="">
+          <div>
+            <h2><span class="tag tag-mod"><svg><use href="#i-scissors"/></svg>改製</span>成衣改製 <span class="count js-count-mod"></span></h2>
+            <p>把一般衣服改成易穿脫，洋裝、牛仔褲也能穿得好看。</p>
+          </div>
+          <span class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <section id="menu" aria-labelledby="menu-h">
+    <div class="wrap">
+      <div class="menu-head">
+        <h2 id="menu-h">產品選單</h2>
+        <dl class="legend">
+          <div><dt><span class="tag tag-stock"><svg><use href="#i-check"/></svg>現貨</span></dt><dd>已經做好、可以直接買</dd></div>
+          <div><dt><span class="tag tag-mod"><svg><use href="#i-scissors"/></svg>改製</span></dt><dd>用一般成衣改成易穿脫，需要製作時間</dd></div>
+        </dl>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="篩選產品"></div>
+      <div id="menu-list"><p class="menu-status">產品載入中…</p></div>
+      <div class="custom-cta">
+        <div>
+          <h3>家裡的衣服也想改成好穿脫？</h3>
+          <p>其他成衣也可以依需求改製。先傳照片到 LINE，告訴我們誰要穿、哪裡不方便。</p>
+        </div>
+        <a class="btn btn-line js-line-mod" href="https://line.me/R/ti/p/%40988mcfny" target="_blank" rel="noopener"><svg><use href="#i-line"/></svg>LINE 問改製</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="steps" aria-labelledby="how-h">
+    <div class="wrap steps-grid">
+      <div>
+        <div class="sec-head" style="margin-bottom:32px">
+          <h2 id="how-h">躺著，三個步驟就穿好</h2>
+          <p>傳統衣服是「套進去」，人要遷就衣服。易穿脫是「包起來」，讓衣服配合人。</p>
+        </div>
+        <ol>
+          <li><div><h3>側翻</h3><p>協助長輩側躺，把打開的衣褲平鋪在床上。</p></div></li>
+          <li><div><h3>平躺</h3><p>翻回來躺在衣服上，手腳都不用抬高。</p></div></li>
+          <li><div><h3>扣上</h3><p>把兩側包起來，黏上魔鬼氈、拉上拉鍊或扣好扣子。</p></div></li>
+        </ol>
+        <p class="note">至少減少 70% 換衣服的體力，身體露出來的時間也短很多。</p>
+      </div>
+      <div class="detail-pics">
+        <figure><img src="assets/products/spring-velcro-rose-4.jpg" alt="長褲兩側從腰到褲腳打開" loading="lazy"><figcaption>長褲兩側從腰到褲腳全開</figcaption></figure>
+        <figure><img src="assets/products/spring-velcro-rose-2.jpg" alt="肩線處的魔鬼氈開口特寫" loading="lazy"><figcaption>肩線整片打開，避開點滴與傷口</figcaption></figure>
+        <figure><img src="assets/products/urine-bag-capri-3.jpg" alt="尿袋管路從褲子口袋穿出" loading="lazy"><figcaption>尿袋管路從口袋走線</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" aria-labelledby="story-h">
+    <div class="wrap story-grid">
+      <div class="story">
+        <h2 id="story-h">從一段真實的照護路開始</h2>
+        <p>創辦人陪伴腦中風的父親與胰臟癌末期的母親，走過漫長的照護路。在無數次穿衣、換衣的時刻，親身體會照顧者的體力消耗，也看見病友對隱私與尊嚴的渴望。這段經歷，是「願滿 Wishfull」成立的原因。</p>
+        <p>擔任義消跑救護的日子裡，也看過太多照護現場的掙扎。我們推廣的不是昂貴的器材，而是讓日常照護簡單一點的衣服與用品：讓病友多一點舒適，讓照顧者少一點疲憊。</p>
+      </div>
+      <figure class="story-quote">
+        <img src="assets/emblem.png" alt="">
+        <p>在生命最脆弱的時候，人不只是「病人」，他仍是爸爸、媽媽、孩子、愛人。</p>
+        <span>愛，應該是無障礙的</span>
+      </figure>
+    </div>
+  </section>
+
+  <div class="promise">
+    <div class="wrap">
+      <div class="promise-box">
+        <div>
+          <h2>清寒身心障礙者，產品無償提供</h2>
+          <p>不需要繁瑣的證明。只要里長或鄰里確認是需要協助的家庭，我們就把衣服送到。如果您或身邊的人正處在困境，請直接聯繫我們。</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-line js-line" href="https://line.me/R/ti/p/%40988mcfny" target="_blank" rel="noopener"><svg><use href="#i-line"/></svg>LINE 聯繫</a>
+          <a class="btn btn-ghost js-tel" href="tel:0958844378"><svg><use href="#i-phone"/></svg>打電話</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="trust" aria-label="評價與報導">
+    <div class="wrap trust-grid">
+      <figure>
+        <blockquote>「穿脫很方便，服務人員很親切。」</blockquote>
+        <cite>Facebook 粉專評論</cite>
+      </figure>
+      <div class="press">
+        <h2>媒體報導</h2>
+        <ul>
+          <li><b>鮮週報新聞網</b><span>2026 年 8 月</span></li>
+          <li><b>愛莎姐的採訪人生</b><span>2026 年 8 月</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" aria-labelledby="visit-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="visit-h">來展示間摸摸布料、試穿看看</h2><p>展示間採預約制，來之前請先用 LINE 或電話約時間。</p></div>
+      <div class="visit-grid">
+        <div class="info">
+          <dl>
+            <dt>地址</dt><dd><a class="js-maps js-address" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%AB%98%E9%9B%84%E5%B8%82%E4%B8%89%E6%B0%91%E5%8D%80%E6%9C%9D%E9%99%BD%E8%A1%9772%E8%99%9F1%E6%A8%93" target="_blank" rel="noopener">高雄市三民區朝陽街72號1樓（預約制）</a></dd>
+            <dt>電話</dt><dd><a class="js-tel js-phone-text" href="tel:0958844378">0958 844 378</a></dd>
+            <dt>時間</dt><dd class="js-hours">週一～週五 09:00–16:00（週六日公休）</dd>
+            <dt>LINE</dt><dd><a class="js-line js-line-id" href="https://line.me/R/ti/p/%40988mcfny" target="_blank" rel="noopener">@988mcfny</a></dd>
+            <dt>Email</dt><dd><a class="js-mail" href="mailto:wishfull9889@gmail.com">wishfull9889@gmail.com</a></dd>
+            <dt>粉專</dt><dd><a class="js-fb" href="https://www.facebook.com/Wishfull988/" target="_blank" rel="noopener">Facebook｜Wishfull 願滿</a></dd>
+          </dl>
+          <div class="cta">
+            <a class="btn btn-line js-line" href="https://line.me/R/ti/p/%40988mcfny" target="_blank" rel="noopener"><svg><use href="#i-line"/></svg>LINE 預約</a>
+            <a class="btn btn-ghost js-tel" href="tel:0958844378"><svg><use href="#i-phone"/></svg>打電話</a>
+          </div>
+        </div>
+        <div class="map"><div class="map-fallback"><svg><use href="#i-pin"/></svg><b>高雄市三民區朝陽街72號1樓</b><span>展示間採預約制</span><a class="btn btn-ghost js-maps" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%AB%98%E9%9B%84%E5%B8%82%E4%B8%89%E6%B0%91%E5%8D%80%E6%9C%9D%E9%99%BD%E8%A1%9772%E8%99%9F1%E6%A8%93" target="_blank" rel="noopener">在 Google 地圖開啟</a></div><iframe class="js-map" src="https://www.google.com/maps?q=%E9%AB%98%E9%9B%84%E5%B8%82%E4%B8%89%E6%B0%91%E5%8D%80%E6%9C%9D%E9%99%BD%E8%A1%9772%E8%99%9F1%E6%A8%93&amp;output=embed" title="願滿展示間地圖" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/emblem.png" alt=""><span><b>願滿</b><small>WISHFULL</small></span></a>
+    <div>Wishfull 願滿無障礙服裝暨生活輔助品・高雄市三民區</div>
+    <div>© <span id="yr"></span> Wishfull 願滿</div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn btn-ghost js-tel" href="tel:0958844378"><svg><use href="#i-phone"/></svg>打電話</a>
+  <a class="btn btn-line js-line" href="https://line.me/R/ti/p/%40988mcfny" target="_blank" rel="noopener"><svg><use href="#i-line"/></svg>LINE 詢問</a>
+</div>
+
+<script src="config.js"></script>
+<script>
+(function(){
+  const C = window.WISHFULL;
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+  const oa = encodeURIComponent(C.lineOaId);
+  const lineAdd = 'https://line.me/R/ti/p/' + oa;
+  const lineMsg = text => 'https://line.me/R/oaMessage/' + oa + '/?' + encodeURIComponent(text);
+  const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(C.address);
+  const ext = a => { a.target = '_blank'; a.rel = 'noopener'; };
+
+  $$('.js-line').forEach(a => { a.href = lineAdd; ext(a); });
+  $$('.js-line-mod').forEach(a => { a.href = lineMsg('你好，我想詢問成衣改製：'); ext(a); });
+  $$('.js-tel').forEach(a => a.href = 'tel:' + C.phone);
+  $$('.js-phone-text').forEach(e => e.textContent = C.phoneDisplay);
+  $$('.js-line-id').forEach(e => e.textContent = C.lineOaId);
+  $$('.js-mail').forEach(a => { a.href = 'mailto:' + C.email; a.textContent = C.email; });
+  $$('.js-fb').forEach(a => a.href = C.facebook);
+  $$('.js-maps').forEach(a => { a.href = mapsUrl; ext(a); });
+  $$('.js-address').forEach(e => e.textContent = C.address + '（預約制）');
+  $$('.js-address-text').forEach(e => e.textContent = C.address + '・點開地圖');
+  $$('.js-hours').forEach(e => e.textContent = C.hours);
+  $$('.js-map').forEach(f => f.src = 'https://www.google.com/maps?q=' + encodeURIComponent(C.address) + '&output=embed');
+  $('#yr').textContent = new Date().getFullYear();
+
+  /* ---------- 讀 Google 試算表 CSV ---------- */
+  function parseCSV(text){
+    const rows = []; let row = [], f = '', q = false;
+    for (let i = 0; i < text.length; i++){
+      const c = text[i];
+      if (q){
+        if (c === '"'){ if (text[i+1] === '"'){ f += '"'; i++; } else q = false; }
+        else f += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(f); f = ''; }
+      else if (c === '\n' || c === '\r'){
+        if (c === '\r' && text[i+1] === '\n') i++;
+        row.push(f); rows.push(row); row = []; f = '';
+      } else f += c;
+    }
+    if (f !== '' || row.length) { row.push(f); rows.push(row); }
+    const head = (rows.shift() || []).map(h => h.trim());
+    return rows.filter(r => r.some(v => v.trim() !== ''))
+      .map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] || '').trim()])));
+  }
+
+  // 一格多張照片：用 | 或換行分隔；Google 雲端分享連結自動轉成圖片網址
+  function imgList(v){
+    return String(v || '').split(/[\n|]+/).map(s => s.trim()).filter(Boolean).map(u => {
+      const m = u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]+)/);
+      return m ? 'https://drive.google.com/thumbnail?id=' + m[1] + '&sz=w1000' : u;
+    });
+  }
+  const num = v => Number(String(v || '').replace(/[^\d.]/g, '')) || 0;
+  const esc = s => String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const isMod = p => /改/.test(p.類型 || '');
+
+  function tagHTML(p){
+    return isMod(p)
+      ? '<span class="tag tag-mod"><svg><use href="#i-scissors"/></svg>改製</span>'
+      : '<span class="tag tag-stock"><svg><use href="#i-check"/></svg>現貨</span>';
+  }
+  function priceHTML(p){
+    const n = num(p.價格), o = num(p.原價);
+    if (!n) return '<span class="price ask">價格請洽詢</span>';
+    return '<span class="price">NT$ ' + n.toLocaleString('zh-TW') + (o > n ? '<s>NT$ ' + o.toLocaleString('zh-TW') + '</s>' : '') + '</span>';
+  }
+  function cardHTML(p){
+    const pics = imgList(p.照片);
+    const sizes = String(p.尺寸 || '').split(/[|／]/).map(s => s.trim()).filter(Boolean);
+    const label = [p.品名, p.款式, sizes.length && ('尺寸 ' + sizes.join('／'))].filter(Boolean).join('，');
+    const main = pics.length
+      ? '<img src="' + esc(pics[0]) + '" alt="' + esc(p.品名) + '" loading="lazy" referrerpolicy="no-referrer">'
+      : '<div class="nophoto"><img src="assets/emblem.png" alt="">照片準備中</div>';
+    const thumbs = pics.length > 1
+      ? '<div class="thumbs" role="group" aria-label="' + esc(p.品名) + ' 的照片">' + pics.map((u, i) =>
+          '<button type="button" aria-pressed="' + (i === 0) + '" aria-label="看第 ' + (i + 1) + ' 張照片"><img src="' + esc(u) + '" alt="" loading="lazy" referrerpolicy="no-referrer"></button>').join('') + '</div>'
+      : '';
+    return '<article class="prod" data-type="' + (isMod(p) ? '改製' : '現貨') + '" data-cat="' + esc(p.分類) + '">' +
+      '<div class="gal"><div class="main">' + main + '</div>' + thumbs + '</div>' +
+      '<div class="body">' +
+        '<div class="tags">' + tagHTML(p) + (p.開合 ? '<span class="how">' + esc(p.開合) + '開合</span>' : '') + '</div>' +
+        '<h3>' + esc(p.品名) + '</h3>' +
+        (p.款式 ? '<p class="style">' + esc(p.款式) + '</p>' : '') +
+        (sizes.length ? '<div class="sizes"><b>尺寸</b>' + sizes.map(s => '<span>' + esc(s) + '</span>').join('') + '</div>' : '') +
+        (p.說明 ? '<p class="desc">' + esc(p.說明) + '</p>' : '') +
+        '<div class="foot">' + priceHTML(p) +
+          '<a class="btn btn-line" target="_blank" rel="noopener" href="' + esc(lineMsg('你好，我想詢問：' + label)) + '"><svg><use href="#i-line"/></svg>詢問這件</a>' +
+        '</div>' +
+      '</div></article>';
+  }
+
+  const list = $('#menu-list'), filters = $('#filters');
+  let all = [];
+
+  // 產品只畫一次；篩選只是顯示／隱藏已經在頁面上的卡片（預先產生的預覽版也能篩選）
+  function render(){
+    const groups = [];   // 依分類分組，保持原本順序
+    all.forEach(p => {
+      const g = p.分類 || '其他';
+      let grp = groups.find(x => x.name === g);
+      if (!grp) groups.push(grp = { name: g, items: [] });
+      grp.items.push(p);
+    });
+    list.innerHTML = groups.map(g =>
+      '<div class="grp"><h3 class="group-title">' + esc(g.name) + ' <span class="note">' + g.items.length + ' 款</span></h3>' +
+      '<div class="prod-grid">' + g.items.map(cardHTML).join('') + '</div></div>'
+    ).join('');
+  }
+
+  function setFilter(name){
+    filters.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === name));
+    list.querySelectorAll('.prod').forEach(c => {
+      c.hidden = !(name === '全部' || c.dataset.type === name || (c.dataset.cat === name && c.dataset.type === '現貨'));
+    });
+    list.querySelectorAll('.grp').forEach(g => g.hidden = !g.querySelector('.prod:not([hidden])'));
+  }
+
+  function setup(raw){
+    // 只顯示：有品名、上架不是「否」、而且至少有一張照片（沒有照片的不出現，補上照片後自動出現）
+    all = raw.filter(p => p.品名 && !/^(否|n|no|下架)$/i.test(String(p.上架 || '').trim()) && imgList(p.照片).length);
+    const stock = all.filter(p => !isMod(p)).length, mod = all.length - stock;
+    $$('.js-count-stock').forEach(e => e.textContent = stock + ' 款');
+    $$('.js-count-mod').forEach(e => e.textContent = mod + ' 款');
+    if (!all.length){ list.innerHTML = '<p class="menu-status">產品即將上架，歡迎先用 LINE 詢問。</p>'; filters.hidden = true; return; }
+    // 篩選順序：全部 → 現貨 → 現貨底下的分類 → 改製（改製不再細分，避免和「成衣改製」重複）
+    const stockCats = [...new Set(all.filter(p => !isMod(p)).map(p => p.分類).filter(Boolean))];
+    const opts = [['全部', all.length], ['現貨', stock], ...stockCats.map(c => [c, all.filter(p => p.分類 === c && !isMod(p)).length]), ['改製', mod]]
+      .filter(([c, n]) => n > 0);
+    filters.innerHTML = opts.map(([c, n]) =>
+      '<button class="chip" type="button" data-f="' + esc(c) + '" aria-pressed="' + (c === '全部') + '">' +
+      (c === '現貨' ? '<svg width="16" height="16"><use href="#i-check"/></svg>' : c === '改製' ? '<svg width="16" height="16"><use href="#i-scissors"/></svg>' : '') +
+      esc(c) + ' <small>' + n + '</small></button>').join('');
+    render();
+  }
+
+  filters.addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) setFilter(b.dataset.f); });
+  list.addEventListener('click', e => {
+    const b = e.target.closest('.thumbs button'); if (!b) return;
+    const card = b.closest('.prod');
+    card.querySelector('.main > img').src = b.querySelector('img').src;
+    card.querySelectorAll('.thumbs button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  });
+  $$('.door').forEach(d => d.addEventListener('click', () => setFilter(d.dataset.go)));
+
+  const local = C.products || C.sampleProducts || [];
+  if (C.sheetCsvUrl){
+    fetch(C.sheetCsvUrl + (C.sheetCsvUrl.includes('?') ? '&' : '?') + 't=' + Date.now())
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(t => setup(parseCSV(t)))
+      .catch(() => setup(local));
+  } else if (!list.querySelector('.prod')) setup(local);   // 預覽版已預先畫好選單時不重畫
+})();
+</script>
+</body>
+</html>
